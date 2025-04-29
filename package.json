@@ -19,5 +19,8 @@
   "homepage": "https://github.com/ZaqueuLopesDaSilvaAraujo/teste-ebac-ui#readme",
   "dependencies": {
     "cypress": "^13.6.0"
+  },
+  "devDependencies": {
+    "chai": "^5.2.0"
   }
 }
