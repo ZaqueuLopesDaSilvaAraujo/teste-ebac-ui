@@ -21,7 +21,7 @@ describe('Funcionalidade: Login', () => {
         cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain' , 'Olá, zaqueu.tabata (não é zaqueu.tabata? Sair)')
     });
 
-    it.only('Deve exibir mensagem de erro ao inserir usuário inválido', () => {
+    it('Deve exibir mensagem de erro ao inserir usuário inválido', () => {
 
         cy.get('#username').type('zaqueu@gmail.com')
         cy.get('#password').type('Mudar@123')
@@ -29,7 +29,7 @@ describe('Funcionalidade: Login', () => {
         cy.get('.woocommerce-error > li').should('contain' , 'Endereço de e-mail desconhecido. Verifique novamente ou tente seu nome de usuário.')
     });
     
-    it.only('Deve exibir mensagem de erro ao inserir senha inválida', () => {
+    it('Deve exibir mensagem de erro ao inserir senha inválida', () => {
 
         cy.get('#username').type('zaqueu.tabata@gmail.com')
         cy.get('#password').type('Mudar@12')

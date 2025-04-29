@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": false,
+    "skipLibCheck": true,
+    "baseUrl": "./",
+    "paths": {
+      "@utils/*": ["cypress/utils/*"],
+      "@e2e/*": ["cypress/e2e/*"],
+      "@support/*": ["cypress/support/*"],
+      "@fixtures/*": ["cypress/fixtures/*"]
+    }
+  },
+  "include": [
+    "cypress/**/*.js"
+, "webpack.config.js"  ],
+  "exclude": [
+    "cypress/e2e/1-getting-started",
+    "cypress/e2e/2-advanced-examples",
+    "node_modules"
+  ]
+}

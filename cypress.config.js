@@ -1,9 +1,13 @@
-const { defineConfig } = require("cypress");
+const { defineConfig } = require('cypress');
+const webpack = require('@cypress/webpack-preprocessor');
+const webpackConfig = require('./webpack.config');
 
 module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      on('file:preprocessor', webpack({ webpackOptions: webpackConfig }));
+      return config;
     },
-  },
+    baseUrl: 'http://lojaebac.ebaconline.art.br'
+  }
 });
