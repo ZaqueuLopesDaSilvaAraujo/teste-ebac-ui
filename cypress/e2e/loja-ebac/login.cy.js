@@ -2,11 +2,12 @@
 ///<reference types="cypress"/>
 
 const { should } = require("chai");
+const perfil = require('../../fixtures/perfil.json')
 
 describe('Funcionalidade: Login', () => {
  
     beforeEach(() => {
-        cy.visit('http://lojaebac.ebaconline.art.br/minha-conta/')
+        cy.visit('minha-conta')
     }); 
     
      afterEach(() => {
@@ -15,8 +16,8 @@ describe('Funcionalidade: Login', () => {
 
     it('Deve fazer login com sucesso', () => {
         
-        cy.get('#username').type('zaqueu.tabata@gmail.com')
-        cy.get('#password').type('Mudar@123')
+        cy.get('#username').type(perfil.usuario)
+        cy.get('#password').type(perfil.senha , {log: false})
         cy.get('.woocommerce-form > .button').click()
         cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain' , 'Olá, zaqueu.tabata (não é zaqueu.tabata? Sair)')
     });
@@ -31,8 +32,8 @@ describe('Funcionalidade: Login', () => {
     
     it('Deve exibir mensagem de erro ao inserir senha inválida', () => {
 
-        cy.get('#username').type('zaqueu.tabata@gmail.com')
-        cy.get('#password').type('Mudar@12')
+        cy.get('#username').type(perfil.usuario)
+        cy.get('#password').type(perfil.senha , {log: false})
         cy.get('.woocommerce-form > .button').click()
         cy.get('.woocommerce-error > li').should('contain' , 'Erro: A senha fornecida para o e-mail zaqueu.tabata@gmail.com está incorreta. Perdeu a senha?')
     });
