@@ -8,17 +8,15 @@ describe('Funcionalidade: Login', () => {
  
     beforeEach(() => {
         cy.visit('minha-conta')
+        
     }); 
     
      afterEach(() => {
         cy.screenshot()
      });
-
+    
     it('Deve fazer login com sucesso', () => {
-        
-        cy.get('#username').type(perfil.usuario)
-        cy.get('#password').type(perfil.senha , {log: false})
-        cy.get('.woocommerce-form > .button').click()
+        cy.login(perfil.usuario, perfil.senha)
         cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain' , 'Olá, zaqueu.tabata (não é zaqueu.tabata? Sair)')
     });
 
@@ -31,9 +29,8 @@ describe('Funcionalidade: Login', () => {
     });
     
     it('Deve exibir mensagem de erro ao inserir senha inválida', () => {
-
-        cy.get('#username').type(perfil.usuario)
-        cy.get('#password').type(perfil.senha , {log: false})
+        cy.get('#username').type('zaqueu.tabata@gmail.com')
+        cy.get('#password').type('Mudar@12')
         cy.get('.woocommerce-form > .button').click()
         cy.get('.woocommerce-error > li').should('contain' , 'Erro: A senha fornecida para o e-mail zaqueu.tabata@gmail.com está incorreta. Perdeu a senha?')
     });
